@@ -1,0 +1,73 @@
+[gd_scene load_steps=2 format=3 uid="uid://doijjn0l7t0aa"]
+
+[ext_resource type="Script" path="res://Control.gd" id="1_o6qtv"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o6qtv")
+
+[node name="rlabel" type="Label" parent="."]
+layout_mode = 0
+offset_top = 92.0
+offset_right = 221.0
+offset_bottom = 221.0
+text = "Radius:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="alabel" type="Label" parent="."]
+layout_mode = 0
+offset_top = 221.0
+offset_right = 221.0
+offset_bottom = 350.0
+text = "Area:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="clabel" type="Label" parent="."]
+layout_mode = 0
+offset_top = 350.0
+offset_right = 221.0
+offset_bottom = 479.0
+text = "Circumfrence:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="radius" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 148.0
+offset_right = 1116.0
+offset_bottom = 179.0
+
+[node name="calc" type="Button" parent="."]
+layout_mode = 0
+offset_top = 529.0
+offset_right = 310.0
+offset_bottom = 648.0
+text = "Calculate!"
+
+[node name="exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 846.0
+offset_top = 529.0
+offset_right = 1156.0
+offset_bottom = 648.0
+text = "Exit"
+
+[node name="clear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 438.0
+offset_top = 529.0
+offset_right = 748.0
+offset_bottom = 648.0
+text = "Clear"
+
+[connection signal="pressed" from="calc" to="." method="_on_calc_pressed"]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="clear" to="." method="_on_clear_pressed"]
