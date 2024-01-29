@@ -1,0 +1,63 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdi1fc04itrxg"]
+
+[ext_resource type="Script" path="res://prog76a.gd" id="1_op061"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_op061")
+
+[node name="calc" type="Button" parent="."]
+layout_mode = 0
+offset_top = 502.0
+offset_right = 320.0
+offset_bottom = 643.0
+text = "Calculate"
+
+[node name="clear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 502.0
+offset_right = 760.0
+offset_bottom = 643.0
+text = "Clear"
+
+[node name="exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 832.0
+offset_top = 502.0
+offset_right = 1152.0
+offset_bottom = 643.0
+text = "Exit"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_top = 178.0
+offset_right = 158.0
+offset_bottom = 253.0
+text = "A Number You Don't Like (1-9):"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_top = 283.0
+offset_right = 1152.0
+offset_bottom = 358.0
+text = "The Result:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="num" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 237.0
+offset_top = 196.0
+offset_right = 937.0
+offset_bottom = 238.0
+alignment = 1
+
+[connection signal="pressed" from="calc" to="." method="_on_calc_pressed"]

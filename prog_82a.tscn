@@ -1,0 +1,81 @@
+[gd_scene load_steps=2 format=3 uid="uid://cr3fbdjdkst6q"]
+
+[ext_resource type="Script" path="res://prog_82a.gd" id="1_ssgjh"]
+
+[node name="prog82a" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ssgjh")
+
+[node name="lmtlbl" type="Label" parent="."]
+layout_mode = 0
+offset_right = 249.0
+offset_bottom = 102.0
+text = "Speed Limit:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="spdlbl" type="Label" parent="."]
+layout_mode = 0
+offset_top = 102.0
+offset_right = 249.0
+offset_bottom = 204.0
+text = "Vehicle Speed:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lblout" type="Label" parent="."]
+layout_mode = 0
+offset_top = 364.0
+offset_right = 1152.0
+offset_bottom = 466.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="txtlimit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 196.0
+offset_top = 40.0
+offset_right = 1107.0
+offset_bottom = 71.0
+
+[node name="txtspeed" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 196.0
+offset_top = 140.0
+offset_right = 1107.0
+offset_bottom = 171.0
+
+[node name="calc" type="Button" parent="."]
+layout_mode = 0
+offset_top = 466.0
+offset_right = 382.0
+offset_bottom = 646.0
+text = "Calculate"
+
+[node name="clear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 382.0
+offset_top = 466.0
+offset_right = 786.0
+offset_bottom = 646.0
+text = "Clear"
+
+[node name="exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 786.0
+offset_top = 466.0
+offset_right = 1168.0
+offset_bottom = 646.0
+text = "Exit"
+
+[connection signal="pressed" from="calc" to="." method="_on_calc_pressed"]
+[connection signal="toggled" from="calc" to="." method="_on_calc_toggled"]
+[connection signal="pressed" from="clear" to="." method="_on_clear_pressed"]
+[connection signal="toggled" from="clear" to="." method="_on_clear_toggled"]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
+[connection signal="toggled" from="exit" to="." method="_on_exit_toggled"]
