@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=3 uid="uid://oi3cem2mrgcq"]
+
+[ext_resource type="Script" path="res://prog88a.gd" id="1_nhuiq"]
+
+[node name="prog88a" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nhuiq")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_top = 149.0
+offset_right = 1152.0
+offset_bottom = 410.0
+
+[node name="num1" type="LineEdit" parent="."]
+layout_mode = 0
+offset_top = 66.0
+offset_right = 576.0
+offset_bottom = 97.0
+
+[node name="num2" type="LineEdit" parent="."]
+layout_mode = 0
+offset_right = 576.0
+offset_bottom = 31.0
+
+[node name="calc" type="Button" parent="."]
+layout_mode = 0
+offset_top = 459.0
+offset_right = 325.0
+offset_bottom = 645.0
+text = "Calculate"
+
+[node name="clear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 415.0
+offset_top = 459.0
+offset_right = 740.0
+offset_bottom = 645.0
+text = "Clear"
+
+[node name="exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 826.0
+offset_top = 459.0
+offset_right = 1151.0
+offset_bottom = 645.0
+text = "Exit"
+
+[connection signal="pressed" from="calc" to="." method="_on_calc_pressed"]
+[connection signal="pressed" from="clear" to="." method="_on_clear_pressed"]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
