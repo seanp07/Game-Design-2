@@ -2,7 +2,7 @@ extends Control
 
 func _on_calc_pressed():
 	var radius = float ($radius.text)
-	var pi = 3.14149
+	var pi = 3.14159
 	var area = pi * radius**2
 	var circ = 2 * pi * radius
 	$alabel.text = "Area: " + str(area)

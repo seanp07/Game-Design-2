@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsnj17k3yi4uq"]
+
+[ext_resource type="Script" path="res://prog115a.gd" id="1_cdlys"]
+
+[node name="prog115a" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cdlys")
+
+[node name="ItemList" type="ItemList" parent="."]
+layout_mode = 0
+offset_right = 1148.0
+offset_bottom = 470.0
+
+[node name="calc" type="Button" parent="."]
+layout_mode = 0
+offset_left = -4.0
+offset_top = 508.0
+offset_right = 379.0
+offset_bottom = 642.0
+text = "Calculate"
+
+[node name="clear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 382.0
+offset_top = 515.0
+offset_right = 765.0
+offset_bottom = 649.0
+text = "Clear"
+
+[node name="exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 770.0
+offset_top = 519.0
+offset_right = 1153.0
+offset_bottom = 653.0
+text = "Exit"
+
+[connection signal="pressed" from="calc" to="." method="_on_calc_pressed"]
+[connection signal="pressed" from="clear" to="." method="_on_clear_pressed"]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
