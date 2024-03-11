@@ -1,0 +1,123 @@
+[gd_scene load_steps=22 format=3 uid="uid://c2h4khdm7f2f3"]
+
+[ext_resource type="Texture2D" uid="uid://dff4nxwi2tttf" path="res://terrain/world3/Bricks089_1K-JPG/Bricks089_1K-JPG_Color.jpg" id="1_k02gn"]
+[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="1_tb7ak"]
+[ext_resource type="Resource" path="res://terrain/world2/data.hterrain" id="2_bal86"]
+[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="3_ier7s"]
+[ext_resource type="Texture2D" uid="uid://csba568qtp560" path="res://terrain/world2/Metal034_1K-JPG/Metal034_1K-JPG_Color.jpg" id="4_7qdxf"]
+[ext_resource type="PackedScene" uid="uid://df1bgv2aiunap" path="res://player_3d.tscn" id="4_jstc6"]
+[ext_resource type="Texture2D" uid="uid://cacbt8mjdebv8" path="res://terrain/world2/RoofingTiles013A_1K-JPG/RoofingTiles013A_1K-JPG_Color.jpg" id="5_jv28x"]
+[ext_resource type="PackedScene" uid="uid://bfhomnjfht2ph" path="res://playerhud_3d.tscn" id="5_s6cqj"]
+[ext_resource type="Texture2D" uid="uid://bb7pryteerc8t" path="res://terrain/world2/Concrete034_1K-JPG/Concrete034_1K-JPG_Color.jpg" id="6_vp2ro"]
+[ext_resource type="PackedScene" uid="uid://bn538xo30ro4h" path="res://goal.tscn" id="6_w6f85"]
+[ext_resource type="Texture2D" uid="uid://6cgfdq1b02o5" path="res://terrain/world2/Leather037_1K-JPG/Leather037_1K-JPG_Color.jpg" id="7_4s8ha"]
+[ext_resource type="Texture2D" uid="uid://4ahas2y1l3a5" path="res://terrain/world2/RoofingTiles013A_1K-JPG/RoofingTiles013A_1K-JPG_NormalGL.jpg" id="8_6m10r"]
+[ext_resource type="Texture2D" uid="uid://ckyoccikmrc4h" path="res://terrain/world2/Metal034_1K-JPG/Metal034_1K-JPG_NormalGL.jpg" id="8_64bvi"]
+[ext_resource type="Texture2D" uid="uid://bpwxyv767uuut" path="res://terrain/world2/Concrete034_1K-JPG/Concrete034_1K-JPG_NormalGL.jpg" id="9_xeyno"]
+[ext_resource type="Texture2D" uid="uid://divw8j2d7ciw" path="res://terrain/world2/Leather037_1K-JPG/Leather037_1K-JPG_NormalGL.jpg" id="11_4wkea"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dnbup"]
+sky_top_color = Color(0.384314, 0.454902, 0.54902, 1)
+sky_horizon_color = Color(0.646078, 0.655882, 0.670588, 1)
+ground_bottom_color = Color(0.2, 0.168627, 0.133333, 1)
+ground_horizon_color = Color(0.646078, 0.655882, 0.670588, 1)
+
+[sub_resource type="Sky" id="Sky_fr08k"]
+sky_material = SubResource("ProceduralSkyMaterial_dnbup")
+
+[sub_resource type="Environment" id="Environment_fbxyw"]
+background_mode = 2
+sky = SubResource("Sky_fr08k")
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_40aur"]
+albedo_texture = ExtResource("1_k02gn")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_284x2"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Resource" id="Resource_woaec"]
+script = ExtResource("3_ier7s")
+mode = 0
+textures = [[ExtResource("4_7qdxf"), ExtResource("5_jv28x"), ExtResource("6_vp2ro"), ExtResource("7_4s8ha")], [ExtResource("8_64bvi"), ExtResource("8_6m10r"), ExtResource("9_xeyno"), ExtResource("11_4wkea")]]
+
+[node name="scene_3d2" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fbxyw")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_color = Color(0.670588, 0, 0, 1)
+light_energy = 1.86
+shadow_enabled = true
+
+[node name="CSGBox3D56" type="CSGBox3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -10.6551, 1.78808, -48.3431)
+material_override = SubResource("StandardMaterial3D_40aur")
+use_collision = true
+size = Vector3(6.73242, 0.710157, 4.25539)
+material = SubResource("StandardMaterial3D_284x2")
+
+[node name="CSGBox3D57" type="CSGBox3D" parent="."]
+transform = Transform3D(0.898794, -0.438371, 0, 0.438371, 0.898794, 0, 0, 0, 1, -2.03767, 6.14006, -48.3431)
+material_override = SubResource("StandardMaterial3D_40aur")
+use_collision = true
+size = Vector3(6.73242, 0.710157, 4.25539)
+material = SubResource("StandardMaterial3D_284x2")
+
+[node name="CSGBox3D58" type="CSGBox3D" parent="."]
+transform = Transform3D(-0.0490915, -0.0226835, -0.998537, -0.419452, 0.907777, 0, 0.906449, 0.418838, -0.0540788, -2.03767, 10.2856, -55.6753)
+material_override = SubResource("StandardMaterial3D_40aur")
+use_collision = true
+size = Vector3(6.73242, 0.710157, 4.25539)
+material = SubResource("StandardMaterial3D_284x2")
+
+[node name="CSGBox3D59" type="CSGBox3D" parent="."]
+transform = Transform3D(0.613037, -0.19329, 0.766044, 0.300706, 0.953717, 0, -0.73059, 0.230354, 0.642788, 8.73363, 13.5675, -55.6753)
+material_override = SubResource("StandardMaterial3D_40aur")
+use_collision = true
+size = Vector3(6.73242, 0.710157, 4.25539)
+material = SubResource("StandardMaterial3D_284x2")
+
+[node name="CSGBox3D60" type="CSGBox3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 19.2382, 16.14, -61.0954)
+material_override = SubResource("StandardMaterial3D_40aur")
+use_collision = true
+size = Vector3(6.73242, 0.710157, 4.25539)
+material = SubResource("StandardMaterial3D_284x2")
+
+[node name="CSGBox3D61" type="CSGBox3D" parent="."]
+transform = Transform3D(-0.981291, -0.190744, -0.0261769, -0.190809, 0.981627, 0, 0.0256959, 0.00499479, -0.999657, 31.8567, 19.8097, -60.989)
+material_override = SubResource("StandardMaterial3D_40aur")
+use_collision = true
+size = Vector3(11.7046, 0.710157, 4.25539)
+material = SubResource("StandardMaterial3D_284x2")
+
+[node name="HTerrain" type="Node3D" parent="."]
+script = ExtResource("1_tb7ak")
+centered = true
+_terrain_data = ExtResource("2_bal86")
+chunk_size = 32
+collision_enabled = true
+collision_layer = 1
+collision_mask = 1
+shader_type = "Classic4Lite"
+custom_shader = null
+custom_globalmap_shader = null
+texture_set = SubResource("Resource_woaec")
+render_layers = 1
+cast_shadow = 1
+shader_params/u_ground_uv_scale = 20
+shader_params/u_depth_blending = true
+shader_params/u_triplanar = null
+shader_params/u_tile_reduction = null
+
+[node name="player3d" parent="." instance=ExtResource("4_jstc6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.380731, 0, -2.05396)
+
+[node name="playerhud3d" parent="." instance=ExtResource("5_s6cqj")]
+
+[node name="Goal" parent="." instance=ExtResource("6_w6f85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.1514, 0, -59.3993)
+next_level = "scene_3d3"

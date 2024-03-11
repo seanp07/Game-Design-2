@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bf317y3odjr3v"]
+
+[ext_resource type="PackedScene" uid="uid://cm88u1pymjnr1" path="res://Mighty Rottis.glb" id="1_l7c13"]
+
+[node name="Mighty Rottis" instance=ExtResource("1_l7c13")]

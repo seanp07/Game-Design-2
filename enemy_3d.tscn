@@ -1,0 +1,57 @@
+[gd_scene load_steps=10 format=3 uid="uid://62hke66ch1wp"]
+
+[ext_resource type="Script" path="res://enemy3d.gd" id="1_seqns"]
+[ext_resource type="Texture2D" uid="uid://cvcjotutiu1ch" path="res://terrain/Textures/MetalPlates011_1K-JPG/MetalPlates011_1K-JPG_Color.jpg" id="2_ntpv0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bqr7o"]
+albedo_texture = ExtResource("2_ntpv0")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_m66kx"]
+
+[sub_resource type="Skin" id="Skin_bpeo5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nb2dt"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fh1ce"]
+radius = 1.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2ywxp"]
+radius = 8.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_13jnk"]
+
+[node name="enemy3d" type="CharacterBody3D" groups=["Enemy"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5713, 10.4023, 6.11914)
+script = ExtResource("1_seqns")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48533, 0)
+material_override = SubResource("StandardMaterial3D_bqr7o")
+mesh = SubResource("CapsuleMesh_m66kx")
+skin = SubResource("Skin_bpeo5")
+surface_material_override/0 = SubResource("StandardMaterial3D_nb2dt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48378, 0)
+shape = SubResource("CapsuleShape3D_fh1ce")
+
+[node name="AttackRange" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0354643, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackRange"]
+shape = SubResource("CylinderShape3D_2ywxp")
+
+[node name="AttackArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48378, 0)
+shape = SubResource("CapsuleShape3D_fh1ce")
+
+[node name="DamageArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12827, 0)
+shape = SubResource("SphereShape3D_13jnk")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
