@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cof2l550vl5jx"
+path="res://.godot/imported/VangeWells02.obj-7540d3a295e3015046fe1805fb9e104b.mesh"
+
+[deps]
+
+files=["res://.godot/imported/VangeWells02.obj-7540d3a295e3015046fe1805fb9e104b.mesh"]
+
+source_file="res://cutscene2/VangeWells02.obj"
+dest_files=["res://.godot/imported/VangeWells02.obj-7540d3a295e3015046fe1805fb9e104b.mesh", "res://.godot/imported/VangeWells02.obj-7540d3a295e3015046fe1805fb9e104b.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
