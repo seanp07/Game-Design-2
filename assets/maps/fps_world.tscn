@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://by8cvsuoualcu"]
+
+[ext_resource type="PackedScene" uid="uid://btmu341uxag81" path="res://assets/maps/de_dust_2_with_real_light.tscn" id="1_efijd"]
+[ext_resource type="PackedScene" uid="uid://bokfktlopodqi" path="res://assets/fps_player_template.tscn" id="2_qha0f"]
+[ext_resource type="PackedScene" uid="uid://djcvpksnr5iut" path="res://assets/fps_enemy_template.tscn" id="3_v2jdl"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mkg0v"]
+sky_top_color = Color(0.384314, 0.454902, 0.54902, 1)
+sky_horizon_color = Color(0.646078, 0.655882, 0.670588, 1)
+ground_bottom_color = Color(0.2, 0.168627, 0.133333, 1)
+ground_horizon_color = Color(0.646078, 0.655882, 0.670588, 1)
+
+[sub_resource type="Sky" id="Sky_qmq3y"]
+sky_material = SubResource("ProceduralSkyMaterial_mkg0v")
+
+[sub_resource type="Environment" id="Environment_l207v"]
+background_mode = 2
+sky = SubResource("Sky_qmq3y")
+tonemap_mode = 2
+
+[node name="fps_world" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_color = Color(1, 0.603922, 0, 1)
+light_energy = 5.0
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_l207v")
+
+[node name="de_dust_2_with_real_light" parent="." instance=ExtResource("1_efijd")]
+transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0.778443, 0, 1.20253)
+
+[node name="fps_player" parent="." instance=ExtResource("2_qha0f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.3473, -4.08945, -1.69287)
+
+[node name="fps_enemy" parent="." instance=ExtResource("3_v2jdl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.6043, 1.75569, -12.6273)
