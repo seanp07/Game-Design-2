@@ -25,13 +25,13 @@ var t_bob = 0.0
 var damage_shader = preload("res://assets/shaders/take_damage.tres")
 @onready var head = $Head
 
-var is_reloading = false
 var blaster 
 var muzzle
+var old_blaster_y
 var dart_scene = preload("res://assets/maps/fps_dart.tscn")
 
 var spray_lock = 0.0
-var NORMAL_SPRAY_AMOUNT = 0.3
+var NORMAL_SPRAY_AMOUNT = 0.03
 var CROUNCH_SPRAY_AMOUNT = 0.01
 var SPRAY_AMOUNT = NORMAL_SPRAY_AMOUNT
 var FIRING_DELAY = 0.075
@@ -40,7 +40,7 @@ var ATTACK = 5.0
 var CLIP_SIZE = 30
 var AMMO = CLIP_SIZE
 var TOTAL_AMO = 150
-
+var is_reloading = false
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -49,7 +49,13 @@ func _physics_process(delta):
 
 	# Handle Jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+		velocity.y = JUMP_VELOCITY if not Input.is_action_pressed("crouch") else JUMP_VELOCITY * 1.05
+	if Input.is_action_pressed ("walk") or Input.is_action_pressed("crouch"):
+		SPEED = WALK_SPEED
+	else:
+		SPEED = NORMAL_SPEED
+	if damage_lock != 0.0:
+		SPEED *=0.6
 
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -69,10 +75,14 @@ func _physics_process(delta):
 	t_bob += delta * velocity.length() * float(is_on_floor())
 	var hbob = headbob(t_bob)
 	camera.transform.origin = hbob 
-	
+	blaster.position.y = clamp(old_blaster_y + (hbob.y * .05 if is_on_floor() else 0), old_blaster_y-0.5, old_blaster_y+0.5)
 	damage_lock = max(damage_lock-delta, 0.0)
 	velocity += inertia
 	inertia = inertia.move_toward(Vector3(), delta * 1000.0)
+	
+	if Input.is_action_pressed("fire"):
+		do_fire()
+	spray_lock = max(spray_lock - delta, 0.0)
 	
 	move_and_slide()
 	
@@ -105,6 +115,16 @@ func take_damage(dmg, override=false, headshot=false, _spawn_origin=null):
 		$HUD/overlay.material = damage_shader.duplicate()
 		$HUD/overlay.material.set_shader_parameter("intensity", dmg_intensity)
 
+func do_fire():
+	if spray_lock == 0.0 and AMMO > 0:
+		var dart = dart_scene.instantiate()
+		add_child(dart)
+		var spray = SPRAY_AMOUNT
+		if not is_on_floor():
+			spray *= randf_range(.5, 5)
+		dart.do_fire(camera, muzzle, spray, ATTACK)
+		AMMO -= 1
+		spray_lock = FIRING_DELAY
 
 func headbob(time):
 	var pos = Vector3.ZERO
@@ -115,6 +135,10 @@ func headbob(time):
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	blaster = $Head/Camera3D/blaster 
+	muzzle = $Head/Camera3D/blaster/muzzle 
+	old_blaster_y = blaster.position.y
+	
 
 
 func _unhandled_input(event):
