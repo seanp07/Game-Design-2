@@ -107,12 +107,25 @@ func _physics_process(delta):
 	
 	if Input.is_action_pressed("crouch"):
 		$CollisionShape3D.shape.height = CROUCH_HEIGHT + 0.05
-		$CollisionShape3D.shape.radius = CROUCH_COLLISION_RAD.RAD
+		$CollisionShape3D.shape.radius = CROUCH_COLLISION_RAD
 		$MeshInstance3D.scale.y = CROUCH_HEIGHT/NORMAL_HEIGHT
-		$Head.position.y = lerp($head.position.y, CROUCH_HEAD, delta*5.0)
+		$Head.position.y = lerp($Head.position.y, CROUCH_HEAD, delta*5.0)
 		SPRAY_AMOUNT = CROUNCH_SPRAY_AMOUNT
+	if Input.is_action_just_released("crouch"):
+		$CollisionShape3D.shape.height = NORMAL_HEIGHT
+		$CollisionShape3D.shape.radius = NORMAL_COLLISION_RAD
+		$MeshInstance3D.scale.y = 1.0
+		$Head.position.y = lerp($Head.position.y, NORMAL_HEAD, delta*5.0)
+		SPRAY_AMOUNT = NORMAL_SPRAY_AMOUNT
 	
 	move_and_slide()
+	
+	if int(HEALTH) <= 0:
+		HEALTH = 0
+		await get_tree().create_timer(0.25).timeout
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		OS.alert("You Died!")
+		get_tree().reload_current_scene()
 	
 	if len(get_tree().get_nodes_in_group("Enemy")) <= 0:
 		await get_tree().create_timer(0.25).timeout
