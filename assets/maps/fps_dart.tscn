@@ -27,4 +27,8 @@ wait_time = 3.0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("CylinderShape3D_4s73j")
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+volume_db = -15.0
+doppler_tracking = 2
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

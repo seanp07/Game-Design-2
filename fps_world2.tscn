@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://dt1no27a5vg36"]
+
+[ext_resource type="PackedScene" uid="uid://p3ss642w17wt" path="res://fps_map_ghost_city.tscn" id="1_r1nns"]
+[ext_resource type="PackedScene" uid="uid://bokfktlopodqi" path="res://assets/fps_player_template.tscn" id="2_3pfo1"]
+[ext_resource type="PackedScene" uid="uid://djcvpksnr5iut" path="res://assets/fps_enemy_template.tscn" id="3_guh3s"]
+[ext_resource type="Texture2D" uid="uid://cvcjotutiu1ch" path="res://terrain/Textures/MetalPlates011_1K-JPG/MetalPlates011_1K-JPG_Color.jpg" id="4_kkbe4"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1mkev"]
+sky_top_color = Color(0.384314, 0.454902, 0.54902, 1)
+sky_horizon_color = Color(0.646078, 0.655882, 0.670588, 1)
+ground_bottom_color = Color(0.2, 0.168627, 0.133333, 1)
+ground_horizon_color = Color(0.646078, 0.655882, 0.670588, 1)
+
+[sub_resource type="Sky" id="Sky_glfbd"]
+sky_material = SubResource("ProceduralSkyMaterial_1mkev")
+
+[sub_resource type="Environment" id="Environment_k13vj"]
+background_mode = 2
+sky = SubResource("Sky_glfbd")
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ou06o"]
+albedo_texture = ExtResource("4_kkbe4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qfo0s"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_k13vj")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_color = Color(1, 0.603922, 0, 1)
+light_energy = 5.0
+shadow_enabled = true
+
+[node name="fps_map_ghost_city" parent="." instance=ExtResource("1_r1nns")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.1507, 0, 44.3471)
+
+[node name="fps_player" parent="." instance=ExtResource("2_3pfo1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.7369, -0.842896, 104.216)
+
+[node name="fps_enemy" parent="." instance=ExtResource("3_guh3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5398, -0.670552, 89.7908)
+
+[node name="CSGBox3D51" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 83.8814, 2.10795, 51.1121)
+material_override = SubResource("StandardMaterial3D_ou06o")
+use_collision = true
+size = Vector3(19.9742, 8.28383, 1.51551)
+material = SubResource("StandardMaterial3D_qfo0s")
+
+[node name="CSGBox3D52" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.1689, 2.10795, 51.1121)
+material_override = SubResource("StandardMaterial3D_ou06o")
+use_collision = true
+size = Vector3(19.9742, 8.28383, 1.51551)
+material = SubResource("StandardMaterial3D_qfo0s")
+
+[node name="CSGBox3D53" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 22.9778, 2.10795, 39.2438)
+material_override = SubResource("StandardMaterial3D_ou06o")
+use_collision = true
+size = Vector3(0.7177, 8.28383, 7.30913)
+material = SubResource("StandardMaterial3D_qfo0s")
