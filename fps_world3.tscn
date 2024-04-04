@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://ci5v5d74twt4y"]
+
+[ext_resource type="PackedScene" uid="uid://b5s4hipolurcg" path="res://fps_map___japanese_compact_area.tscn" id="1_uihme"]
+[ext_resource type="PackedScene" uid="uid://bokfktlopodqi" path="res://assets/fps_player_template.tscn" id="2_qyurp"]
+[ext_resource type="PackedScene" uid="uid://djcvpksnr5iut" path="res://assets/fps_enemy_template.tscn" id="3_q16ag"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tth4l"]
+sky_top_color = Color(0.384314, 0.454902, 0.54902, 1)
+sky_horizon_color = Color(0.646078, 0.655882, 0.670588, 1)
+ground_bottom_color = Color(0.2, 0.168627, 0.133333, 1)
+ground_horizon_color = Color(0.646078, 0.655882, 0.670588, 1)
+
+[sub_resource type="Sky" id="Sky_k0jap"]
+sky_material = SubResource("ProceduralSkyMaterial_tth4l")
+
+[sub_resource type="Environment" id="Environment_mia1l"]
+background_mode = 2
+sky = SubResource("Sky_k0jap")
+tonemap_mode = 2
+
+[node name="fps_world3" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mia1l")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_color = Color(1, 0.603922, 0, 1)
+light_energy = 5.0
+shadow_enabled = true
+
+[node name="fps_map_-_japanese_compact_area" parent="." instance=ExtResource("1_uihme")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.865369, -1.19209e-07, 1.39242)
+
+[node name="fps_player" parent="." instance=ExtResource("2_qyurp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.503, 1.27696, 25.4636)
+
+[node name="fps_enemy" parent="." instance=ExtResource("3_q16ag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.56763, 1.47377, 10.8418)
+
+[node name="fps_enemy2" parent="." instance=ExtResource("3_q16ag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.56763, 1.47377, -5.70395)

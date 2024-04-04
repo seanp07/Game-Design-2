@@ -173,7 +173,10 @@ func _physics_process(delta):
 		await get_tree().create_timer(0.25).timeout
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		OS.alert("You win!")
-		get_tree().change_scene_to_file("res://fps_world2.tscn")
+		if "fps_world2" in get_tree().current_scene.name:
+			get_tree().change_scene_to_file("res://fps_world3.tscn")
+		else:
+			get_tree().change_scene_to_file("res://fps_world2.tscn")
 	if int(HEALTH) <= 0:
 		HEALTH = 0
 		await get_tree().create_timer(0.25).timeout
