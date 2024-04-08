@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://dejlbvigj5y8r"]
+
+[ext_resource type="PackedScene" uid="uid://bfoqeihyhenre" path="res://rc_player.tscn" id="1_jq7pd"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7f307"]
+sky_top_color = Color(0.384314, 0.454902, 0.54902, 1)
+sky_horizon_color = Color(0.646078, 0.655882, 0.670588, 1)
+ground_bottom_color = Color(0.2, 0.168627, 0.133333, 1)
+ground_horizon_color = Color(0.646078, 0.655882, 0.670588, 1)
+
+[sub_resource type="Sky" id="Sky_5oi6a"]
+sky_material = SubResource("ProceduralSkyMaterial_7f307")
+
+[sub_resource type="Environment" id="Environment_g8ig2"]
+background_mode = 2
+sky = SubResource("Sky_5oi6a")
+tonemap_mode = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hl0ty"]
+
+[node name="rc_world" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_g8ig2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_color = Color(1, 0.603922, 0, 1)
+light_energy = 5.0
+shadow_enabled = true
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+use_collision = true
+mesh = SubResource("PlaneMesh_hl0ty")
+
+[node name="race" parent="." instance=ExtResource("1_jq7pd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.536906, 0, 0.494835)
