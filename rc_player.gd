@@ -1,9 +1,9 @@
 extends VehicleBody3D
 
 const MAX_STEER = 0.4
-const MAX_RPM = 300
-const MAX_TORQUE = 200
-const HORSE_POWER = 100
+const MAX_RPM = 500
+const MAX_TORQUE = 450
+const HORSE_POWER = 400
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -17,3 +17,17 @@ func _physics_process(delta):
 	$backleft.engine_force = calc_engine_force(accel, abs($backleft.get_rpm()))
 	$backright.engine_force = calc_engine_force(accel, abs($backright.get_rpm()))
 	
+	var fwd_mps = abs((self.linear_velocity * self.transform.basis).z)
+	$Label.text = "%d mph" % (fwd_mps * 2.23694)
+	
+	$centermass.global_position = $centermass.global_position.lerp(self.global_position, delta*20)
+	$centermass.transform = $centermass.transform.interpolate_with(self.transform, delta*5)
+	$centermass/Camera3D.look_at(self.global_position.lerp(self.global_position + self.linear_velocity, delta * 5))
+	check_and_right_vehicle()
+	
+func check_and_right_vehicle():
+	if self.global_transform.basis.y.dot(Vector3.UP) < 0:
+		var current_rotation = self.rotation_degrees
+		current_rotation.x = 0
+		current_rotation.z = 0 
+		self.rotation_degrees = current_rotation

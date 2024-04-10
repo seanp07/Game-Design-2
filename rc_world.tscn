@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dejlbvigj5y8r"]
+[gd_scene load_steps=7 format=3 uid="uid://dejlbvigj5y8r"]
 
 [ext_resource type="PackedScene" uid="uid://bfoqeihyhenre" path="res://rc_player.tscn" id="1_jq7pd"]
 
@@ -18,6 +18,8 @@ tonemap_mode = 2
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_hl0ty"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_612m1"]
+
 [node name="rc_world" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -35,4 +37,10 @@ use_collision = true
 mesh = SubResource("PlaneMesh_hl0ty")
 
 [node name="race" parent="." instance=ExtResource("1_jq7pd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.536906, 0, 0.494835)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.536906, 0, 73.5316)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.955289, -0.295675, 0, 0.295675, 0.955289, 0.436821, 11.2516, -6.45334)
+use_collision = true
+size = Vector3(4.53999, 1, 654.095)
+material = SubResource("StandardMaterial3D_612m1")
