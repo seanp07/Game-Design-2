@@ -1,9 +1,9 @@
 extends VehicleBody3D
 
 const MAX_STEER = 0.4
-const MAX_RPM = 500
-const MAX_TORQUE = 450
-const HORSE_POWER = 400
+const MAX_RPM = 300
+const MAX_TORQUE = 200
+const HORSE_POWER = 100
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
