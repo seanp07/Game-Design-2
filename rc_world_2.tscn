@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://3ny5ipb4i2fs"]
+
+[ext_resource type="PackedScene" uid="uid://bfoqeihyhenre" path="res://rc_player.tscn" id="1_312wo"]
+[ext_resource type="MeshLibrary" uid="uid://bjat20aqlohvu" path="res://assets/road_tiles.tres" id="2_2sa2k"]
+[ext_resource type="PackedScene" uid="uid://ck43ox4o1q38i" path="res://racegoal.tscn" id="3_m3lk5"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4hp1f"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_cxpvt"]
+sky_material = SubResource("ProceduralSkyMaterial_4hp1f")
+
+[sub_resource type="Environment" id="Environment_ej33h"]
+background_mode = 2
+sky = SubResource("Sky_cxpvt")
+tonemap_mode = 2
+
+[node name="rc_world2" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ej33h")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="race" parent="." instance=ExtResource("1_312wo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.00699, -0.223923, -2.80392)
+
+[node name="GridMap" type="GridMap" parent="."]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
+mesh_library = ExtResource("2_2sa2k")
+cell_size = Vector3(1, 1, 1)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(65535, 65534, 1441971, 65535, 65535, 1441975, 65535, 0, 1441975, 65535, 65533, 1441975, 65535, 65532, 1441975, 65535, 65531, 1441975, 65535, 65530, 1441975, 65535, 65529, 1441975, 65535, 65528, 1441975, 65535, 65527, 1441975, 65535, 65526, 1441960, 1, 65525, 655535, 4, 65526, 183, 5, 65526, 183, 6, 65526, 183, 7, 65526, 183, 8, 65526, 183, 9, 65526, 183, 10, 65526, 183, 11, 65526, 183, 12, 65526, 183, 15, 65527, 175, 16, 65527, 655535, 19, 65528, 655529, 21, 65531, 1048759, 21, 65532, 1048759, 21, 65533, 1048759, 22, 65535, 168, 23, 65535, 655528, 24, 1, 1048751, 65535, 1, 1048759, 65535, 2, 1048759, 65535, 3, 1048759, 65535, 4, 1048759, 65535, 5, 1048759, 65535, 6, 1048759, 2, 10, 170, 3, 10, 183, 4, 10, 183, 5, 10, 183, 6, 10, 183, 7, 10, 183, 8, 10, 183, 9, 10, 655535, 12, 11, 655543, 13, 11, 655543, 14, 11, 655543, 15, 11, 655543, 16, 11, 655535, 21, 10, 1048745, 22, 7, 1048751, 23, 4, 1048751)
+}
+
+[node name="racegoal" parent="." instance=ExtResource("3_m3lk5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.09555, 0, -9.50861)
+
+[node name="racegoal2" parent="." instance=ExtResource("3_m3lk5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.939165, 0, -9.50861)
