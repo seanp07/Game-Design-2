@@ -200,7 +200,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_kext0")
 
-[node name="race" type="VehicleBody3D" groups=["Player"]]
+[node name="rc_opp" type="VehicleBody3D" groups=["Player"]]
 mass = 80.0
 script = ExtResource("1_xsj58")
 

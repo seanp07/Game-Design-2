@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bgeavutscdnya"]
+[gd_scene load_steps=8 format=3 uid="uid://bgeavutscdnya"]
 
 [ext_resource type="MeshLibrary" uid="uid://bjat20aqlohvu" path="res://assets/road_tiles.tres" id="1_cint5"]
 [ext_resource type="PackedScene" uid="uid://bfoqeihyhenre" path="res://rc_player.tscn" id="2_v1lkv"]
 [ext_resource type="PackedScene" uid="uid://ck43ox4o1q38i" path="res://racegoal.tscn" id="2_wy6rv"]
+[ext_resource type="PackedScene" uid="uid://bqe0jlm2vll6d" path="res://rc_opp.tscn" id="4_tdbd6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i0oms"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -44,3 +45,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.796
 
 [node name="race" parent="." instance=ExtResource("2_v1lkv")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.71244, 0, -5.05059)
+
+[node name="rc_opp" parent="." instance=ExtResource("4_tdbd6")]
+transform = Transform3D(-4.37114e-08, 0.0279216, 0.99961, 0, 0.99961, -0.0279216, -1, -1.22049e-09, -4.36943e-08, 1.70206, -0.0536767, -2.8187)
