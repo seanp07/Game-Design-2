@@ -5,8 +5,10 @@ const MAX_RPM = 300
 const MAX_TORQUE = 200
 const HORSE_POWER = 100
 
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	
 
 func calc_engine_force(accel, rpm):
 	return accel * MAX_TORQUE * (1- rpm / MAX_RPM)
@@ -24,6 +26,8 @@ func _physics_process(delta):
 	$centermass.transform = $centermass.transform.interpolate_with(self.transform, delta*5)
 	$centermass/Camera3D.look_at(self.global_position.lerp(self.global_position + self.linear_velocity, delta * 5))
 	check_and_right_vehicle()
+	
+	var vpower = $AudioStreamPlayer3D.volume_db * accel
 	
 func check_and_right_vehicle():
 	if self.global_transform.basis.y.dot(Vector3.UP) < 0:

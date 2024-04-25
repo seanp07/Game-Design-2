@@ -35,6 +35,7 @@ func _physics_process(delta):
 		steering = -sign(steering) * MAX_STEER
 	$backleft.engine_force = calc_engine_force(acceleration, abs($backleft.get_rpm()))
 	$backright.engine_force = calc_engine_force(acceleration, abs($backright.get_rpm()))
+	var vpower = $AudioStreamPlayer3D.volume_db * acceleration
 func check_stuck_condition(delta):
 	if linear_velocity.length() < 1.0:
 		stuck_timer += delta
