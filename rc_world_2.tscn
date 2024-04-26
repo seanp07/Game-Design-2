@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://3ny5ipb4i2fs"]
+[gd_scene load_steps=9 format=3 uid="uid://3ny5ipb4i2fs"]
 
 [ext_resource type="PackedScene" uid="uid://bfoqeihyhenre" path="res://rc_player.tscn" id="1_312wo"]
 [ext_resource type="MeshLibrary" uid="uid://bjat20aqlohvu" path="res://assets/road_tiles.tres" id="2_2sa2k"]
 [ext_resource type="PackedScene" uid="uid://ck43ox4o1q38i" path="res://racegoal.tscn" id="3_m3lk5"]
 [ext_resource type="PackedScene" uid="uid://bqe0jlm2vll6d" path="res://rc_opp.tscn" id="4_nwsss"]
+[ext_resource type="AudioStream" uid="uid://cl7e02cf7fl3q" path="res://assets/sounds/fsm-team-happy-days.mp3" id="5_3weou"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4hp1f"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -47,3 +48,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.99663, 0, -9.50861)
 
 [node name="rc_opp" parent="." instance=ExtResource("4_nwsss")]
 transform = Transform3D(1, 0, 0, 0, 0.999614, -0.0277646, 0, 0.0277646, 0.999614, -1.48817, -0.0536767, -2.8187)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_3weou")
+volume_db = -21.105
+autoplay = true

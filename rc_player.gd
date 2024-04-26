@@ -5,7 +5,9 @@ const MAX_RPM = 300
 const MAX_TORQUE = 200
 const HORSE_POWER = 100
 
-
+@onready var audio_player = $AudioStreamPlayer3D
+var vroom = preload("res://assets/Car-Revving-Medium-A2-www.fesliyanstudios.com.mp3")
+var idle = preload("res://assets/Car-Driving-B3-www.fesliyanstudios.com.mp3")
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
@@ -27,7 +29,14 @@ func _physics_process(delta):
 	$centermass/Camera3D.look_at(self.global_position.lerp(self.global_position + self.linear_velocity, delta * 5))
 	check_and_right_vehicle()
 	
-	var vpower = $AudioStreamPlayer3D.volume_db * accel
+	if fwd_mps == 0:
+		audio_player.stream = idle
+		audio_player.play()
+	else:
+		audio_player.stream = vroom
+		audio_player.play()
+	$AudioStreamPlayer3D.volume_db = int(accel) * 5
+
 	
 func check_and_right_vehicle():
 	if self.global_transform.basis.y.dot(Vector3.UP) < 0:

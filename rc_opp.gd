@@ -16,6 +16,10 @@ var is_stuck = 0
 @onready var rayL = $rayleft
 @onready var rayR = $rayright 
 
+@onready var audio_player = $AudioStreamPlayer3D
+var vroom = preload("res://assets/Car-Revving-Medium-A2-www.fesliyanstudios.com.mp3")
+var idle = preload("res://assets/Car-Driving-B3-www.fesliyanstudios.com.mp3")
+
 func _physics_process(delta):
 	var target_steering = 0.0
 	update_raycasts()
@@ -35,7 +39,13 @@ func _physics_process(delta):
 		steering = -sign(steering) * MAX_STEER
 	$backleft.engine_force = calc_engine_force(acceleration, abs($backleft.get_rpm()))
 	$backright.engine_force = calc_engine_force(acceleration, abs($backright.get_rpm()))
-	var vpower = $AudioStreamPlayer3D.volume_db * acceleration
+	if acceleration == 0:
+		audio_player.stream = idle
+	else:
+		audio_player.stream = vroom
+	$AudioStreamPlayer3D.volume_db = int(acceleration)
+	
+	
 func check_stuck_condition(delta):
 	if linear_velocity.length() < 1.0:
 		stuck_timer += delta
