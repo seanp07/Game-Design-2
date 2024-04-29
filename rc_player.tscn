@@ -276,5 +276,6 @@ label_settings = SubResource("LabelSettings_vofra")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_f7fuy")
+volume_db = 19.81
 autoplay = true
 doppler_tracking = 2
