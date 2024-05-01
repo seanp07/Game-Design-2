@@ -28,13 +28,19 @@ func _physics_process(delta):
 	$centermass/Camera3D.look_at(self.global_position.lerp(self.global_position + self.linear_velocity, delta * 5))
 	check_and_right_vehicle()
 	
-	if accel == 100:
+	if accel > 0:
+		var noise = 1500. * abs($backleft.engine_force / float(MAX_RPM))
+		print("noise: " + str(noise))
+		var dB = clamp(noise, -10, 1500)
+		$AudioStreamPlayer3D.volume_db = dB
 		audio_player.stream = idle
-		audio_player.play()
+		if not audio_player.is_playing():
+			audio_player.play()
+		print(dB)
 	else:
 		audio_player.stream = vroom
+		audio_player.volume_db = 10
 		audio_player.play()
-	$AudioStreamPlayer3D.volume_db = fwd_mps * 2.23694
 
 	
 func check_and_right_vehicle():
