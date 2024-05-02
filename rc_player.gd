@@ -36,7 +36,6 @@ func _physics_process(delta):
 		audio_player.stream = idle
 		if not audio_player.is_playing():
 			audio_player.play()
-		print(dB)
 	else:
 		audio_player.stream = vroom
 		audio_player.volume_db = 10
